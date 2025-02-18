@@ -1,8 +1,8 @@
 {
-    'name': 'Visitor Tracking',
+    'name': 'ip_visitor_tracking',
     'version': '1.0',
     'summary': 'Información sobre la geolocalización de los usuarios',
-    'description': 'Obtención de geolocalización en tiempo real.',
+    'description': 'Obtención de información geolocalizada de los visitantes.',
     'author': 'Emilio Neva',
     'category': 'Website',
     'depends': ['base'],
