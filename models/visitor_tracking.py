@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 import requests
 
+
 class VisitorTracking(models.Model):
     _name = 'visitor.tracking'
     _description = 'Información de Seguimiento de Visitantes'
