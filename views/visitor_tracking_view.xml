@@ -1,5 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem name="Visitor Tracking" id="visitor_tracking_menu"/>
-    <menuitem name="Register Visitor Location" parent="visitor_tracking_menu" action="visitor_tracking_action_register"/>
+    <!-- Vista Tree -->
+    <record id="view_visitor_tracking_tree" model="ir.ui.view">
+        <field name="name">visitor.tracking.tree</field>
+        <field name="model">visitor.tracking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ip_address"/>
+                <field name="country"/>
+                <field name="city"/>
+                <field name="visit_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Form -->
+    <record id="view_visitor_tracking_form" model="ir.ui.view">
+        <field name="name">visitor.tracking.form</field>
+        <field name="model">visitor.tracking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_get_location" string="Obtener Ubicación" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="api_key" string="Clave API"/>
+                            <field name="ip_address" string="Dirección IP"/>
+                            <field name="country" string="País"/>
+                            <field name="city" string="Ciudad"/>
+                        </group>
+                        <group>
+                            <field name="longitude" string="Longitud"/>
+                            <field name="latitude" string="Latitud"/>
+                            <field name="service_provider" string="Proveedor de Servicios"/>
+                            <field name="organization" string="Organización"/>
+                            <field name="visit_time" string="Hora de Visita"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_visitor_tracking" model="ir.actions.act_window">
+        <field name="name">Seguimiento de Visitantes</field>
+        <field name="res_model">visitor.tracking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú -->
+    <menuitem id="menu_visitor_tracking_root" 
+              name="Seguimiento de Visitantes" 
+              sequence="20"/>
+              
+    <menuitem id="menu_visitor_tracking" 
+              name="Ubicaciones"
+              parent="menu_visitor_tracking_root"
+              action="action_visitor_tracking"
+              sequence="10"/>
 </odoo>
